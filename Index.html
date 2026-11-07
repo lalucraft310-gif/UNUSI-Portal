@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102b53">
+  <title>SI Angkatan 2026</title>
+
+  <!-- ONESIGNAL WEB PUSH SDK -->
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    window.OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "d5f31a7f-1ac1-4317-aab1-6b7669314b79",
+      });
+    });
+  </script>
+
+  <!-- GABUNGAN CSS -->
+  <style>
+    :root {
+      --navy: #102b53;
+      --blue: #2674d9;
+      --light-blue: #edf5ff;
+      --text: #1d2939;
+      --muted: #667085;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text);
+      background: #f5f8fc;
+    }
+
+    .topbar {
+      background: var(--navy);
+      color: white;
+      padding: 10px max(16px, calc((100% - 1000px) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      background: #76c5ff;
+      color: var(--navy);
+      font-weight: bold;
+      font-size: 22px;
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    h1, h2, p {
+      margin-top: 0;
+    }
+
+    .brand h1 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .brand p {
+      margin-bottom: 0;
+      color: #d5e6ff;
+      font-size: 13px;
+    }
+
+    button {
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .admin-btn, .primary-btn {
+      border: 0;
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--navy);
+      font-weight: bold;
+      padding: 10px 13px;
+    }
+
+    /* EFEK KHUSUS ADMIN MASTER */
+    .master-admin-badge {
+      background: linear-gradient(135deg, #ffd700, #ff8c00, #ff4500);
+      color: #ffffff !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      border: 1px solid #ffe44d;
+      animation: pulseMaster 2s infinite;
+    }
+
+    @keyframes pulseMaster {
+      0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+      50% { box-shadow: 0 0 15px rgba(255, 140, 0, 0.9); }
+      100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px 16px;
+    }
+
+    .welcome {
+      background: linear-gradient(120deg, #dcecff, #f7fbff);
+      border: 1px solid #d8e7fa;
+      padding: 25px 20px;
+      border-radius: 18px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: var(--blue);
+    }
+
+    .welcome h2 {
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .welcome p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .stat-card, .card {
+      background: white;
+      border: 1px solid #e2eaf4;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .stat-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .stat-card strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--navy);
+      font-size: 25px;
+    }
+
+    .navigation {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 0 12px;
+    }
+
+    .nav-btn {
+      white-space: nowrap;
+      border: 1px solid #dbe5f2;
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: white;
+      color: var(--navy);
+    }
+
+    .nav-btn.active {
+      color: white;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .content {
+      min-height: 230px;
+    }
+
+    .card {
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      background: var(--light-blue);
+      color: #1756a9;
+      font-size: 12px;
+    }
+
+    .empty {
+      color: var(--muted);
+      text-align: center;
+      padding: 28px 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    dialog {
+      border: 0;
+      border-radius: 16px;
+      width: min(420px, calc(100% - 28px));
+      padding: 24px;
+    }
+
+    dialog::backdrop {
+      background: #0b1d35aa;
+    }
+
+    dialog label {
+      display: block;
+      font-size: 13px;
+      margin: 14px 0 6px;
+    }
+
+    dialog input, dialog select, dialog textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd7e5;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .primary-btn {
+      background: var(--blue);
+      color: white;
+    }
+
+    .secondary-btn {
+      background: #edf1f6;
+      border: 0;
+      padding: 10px 13px;
+      border-radius: 9px;
+    }
+
+    .message {
+      font-size: 13px;
+      color: #b42318;
+    }
+
+    .student-name {
+      font-size: 14px;
+      font-weight: normal;
+      color:#333333;
+    }
+
+    .status-box {
+      font-weight: bold;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .link-text { text-align: center; margin-top: 15px; font-size: 13px; }
+    .link-text a { color: #2b6cb0; text-decoration: none; font-weight: bold; }
+
+    .task-img, .gallery-img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .gallery-item {
+      background: #fff;
+      border: 1px solid #e2eaf4;
+      border-radius: 10px;
+      padding: 8px;
+    }
+
+    @media (max-width: 500px) {
+      .topbar { padding: 13px; }
+      .brand h1 { font-size: 14px; }
+      .admin-btn { font-size: 12px; padding: 9px; }
+      main { padding: 15px 12px; }
+      .stats { gap: 8px; }
+      .stat-card { padding: 11px 9px; }
+      .stat-card span { font-size: 10px; }
+      .stat-card strong { font-size: 21px; }
+      .header-logos { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+      .topbar-logo { height: 32px; width: auto; object-fit: contain; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">SI</div>
+      <div>
+        <h1>Sistem Informasi</h1>
+        <p>Angkatan 2026 UNU NTB</p>
+      </div>
+    </div>
+    <div class="header-logos">
+      <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 6px; color: #fff; font-weight: bold;">UNU NTB</span>
+    </div>
+    <button id="adminBtn" class="admin-btn">Login Admin / Dosen</button>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <p class="eyebrow">PORTAL INFORMASI KELAS</p>
+      <h2>Halo, Mahasiswa SI! 👋</h2>
+      <p>Semua informasi kelas dalam satu tempat.</p>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span>Mahasiswa</span>
+        <strong id="studentCount">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Jadwal kuliah</span>
+        <strong id="scheduleCount">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Pengumuman</span>
+        <strong id="announcementCount">0</strong>
+      </div>
+    </section>
+
+    <nav class="navigation">
+      <button class="nav-btn active" data-page="home">Beranda</button>
+      <button class="nav-btn" data-page="students">Mahasiswa</button>
+      <button class="nav-btn" data-page="schedule">Jadwal</button>
+      <button class="nav-btn" data-page="lecturers">Informasi Dosen</button>
+      <button class="nav-btn" data-page="tasks">Tugas</button>
+      <button class="nav-btn" data-page="announcements">Info Kelas</button>
+      <button class="nav-btn" data-page="gallery">Galeri</button>
+      <button class="nav-btn admin-master-only" data-page="approvals" style="display:none; background: #fff3cd; color: #856404; font-weight:bold;">Persetujuan Akun</button>
+    </nav>
+
+    <section id="pageContent" class="content"></section>
+
+    <footer>
+      <p>SI Angkatan 2026 · Portal Informasi Kelas</p>
+    </footer>
+  </main>
+
+  <!-- DIALOG LOGIN KELAS -->
+  <dialog id="adminDialog">
+    <form id="adminForm">
+      <h2>Login Akses</h2>
+      <p>Masukkan username dan password terdaftar Anda.</p>
+      <label for="adminUsername">Username</label>
+      <input id="adminUsername" type="text" placeholder="Masukkan username" required>
+      <label for="adminPassword">Kata sandi</label>
+      <input id="adminPassword" type="password" placeholder="Kata sandi" required>
+      <p id="loginMessage" class="message"></p>
+      <div class="dialog-actions">
+        <button type="button" id="closeDialog" class="secondary-btn">Batal</button>
+        <button type="submit" class="primary-btn">Masuk</button>
+      </div>
+      <div class="link-text" style="margin-top: 15px;">
+        Belum punya akun? <a href="#" id="openRegisterModal">Daftar Akun Baru</a>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- DIALOG REGISTRASI -->
+  <dialog id="authDialog">
+    <div style="position: relative;">
+      <h2>Registrasi Akun</h2>
+      <form id="formRegistrasi">
+        <div class="form-group">
+          <label>Nama Asli</label>
+          <input type="text" id="namaAsli" placeholder="Masukkan nama lengkap" required />
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
+          <label>Username</label>
+          <input type="text" id="username" placeholder="Buat username" required />
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="••••••••" required />
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
+          <label>Daftar Sebagai</label>
+          <select id="role" required>
+            <option value="Dosen">Dosen</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div id="pesanStatus" class="status-box" style="display: none;"></div>
+        <div class="dialog-actions" style="margin-top: 15px;">
+          <button type="button" id="closeAuthDialog" class="secondary-btn">Tutup</button>
+          <button type="submit" id="btnDaftar" class="primary-btn">Kirim Permintaan</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- DIALOG TAMBAH TUGAS -->
+  <dialog id="taskDialog">
+    <form id="taskForm">
+      <h2>Tambah Tugas Baru</h2>
+      <label for="taskSubject">Mata Kuliah</label>
+      <input id="taskSubject" type="text" placeholder="Contoh: Pemrograman Web" required>
+      <label for="taskDesc">Keterangan / Deskripsi Tugas</label>
+      <textarea id="taskDesc" rows="3" placeholder="Isi instruksi tugas..." required></textarea>
+      <label for="taskImgFile">Pilih Foto Soal dari Galeri (Opsional)</label>
+      <input id="taskImgFile" type="file" accept="image/*">
+      <label for="taskExpiry">Batas Waktu Penghapusan</label>
+      <select id="taskExpiry" required>
+        <option value="24">24 Jam</option>
+        <option value="168">7 Hari</option>
+        <option value="336">14 Hari</option>
+      </select>
+      <div class="dialog-actions">
+        <button type="button" id="closeTaskDialog" class="secondary-btn">Batal</button>
+        <button type="submit" class="primary-btn">Simpan Tugas</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- DIALOG TAMBAH PENGUMUMAN / INFO KELAS -->
+  <dialog id="announcementDialog">
+    <form id="announcementForm">
+      <h2>Tambah Pengumuman Baru</h2>
+      <label for="annTitle">Judul Pengumuman</label>
+      <input id="annTitle" type="text" placeholder="Contoh: Libur Perkuliahan" required>
+      <label for="annBody">Isi Pengumuman</label>
+      <textarea id="annBody" rows="3" placeholder="Tulis isi pengumuman..." required></textarea>
+      <label for="annExpiry">Batas Waktu Penghapusan</label>
+      <select id="annExpiry" required>
+        <option value="24">24 Jam</option>
+        <option value="168">7 Hari</option>
+        <option value="336">14 Hari</option>
+      </select>
+      <div class="dialog-actions">
+        <button type="button" id="closeAnnDialog" class="secondary-btn">Batal</button>
+        <button type="submit" class="primary-btn">Publikasikan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- DIALOG TAMBAH FOTO GALERI -->
+  <dialog id="galleryDialog">
+    <form id="galleryForm">
+      <h2>Unggah Foto Galeri</h2>
+      <label for="galleryCaption">Keterangan Foto</label>
+      <input id="galleryCaption" type="text" placeholder="Contoh: Kegiatan Praktikum Lab" required>
+      <label for="galleryImgFile">Pilih Foto dari Galeri HP</label>
+      <input id="galleryImgFile" type="file" accept="image/*" required>
+      <div class="dialog-actions">
+        <button type="button" id="closeGalleryDialog" class="secondary-btn">Batal</button>
+        <button type="submit" class="primary-btn">Unggah Foto</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- DIALOG EDIT JADWAL KULIAH -->
+  <dialog id="scheduleDialog">
+    <form id="scheduleForm">
+      <h2>Edit Jadwal Kuliah</h2>
+      <input type="hidden" id="schId">
+      <label>Hari</label>
+      <input id="schDay" type="text" readonly>
+      <label>Mata Kuliah</label>
+      <input id="schSubject" type="text" required>
+      <label>Jam</label>
+      <input id="schTime" type="text" required>
+      <label>Nama Dosen Pengampu</label>
+      <input id="schLecturer" type="text" required>
+      <div class="dialog-actions">
+        <button type="button" id="closeScheduleDialog" class="secondary-btn">Batal</button>
+        <button type="submit" class="primary-btn">Simpan Perubahan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- SDK FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- LOGIKA APLIKASI -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAzXTJlhnwaOPQvGp1UNAMi3ZTboYb-c9k",
+      authDomain: "si-angkatan-2026.firebaseapp.com",
+      projectId: "si-angkatan-2026",
+      storageBucket: "si-angkatan-2026.firebasestorage.app",
+      messagingSenderId: "29273270632",
+      appId: "1:29273270632:web:26b00265ec84a6843e0edd"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const students = [
+      { name: "1. TORIQ AHMAD HAIKAL" }, { name: "2. BITA FITASA" }, { name: "3. HALID MAWARDI" },
+      { name: "4. ELVAN PERMANA" }, { name: "5. ADDIN MUSTAQIM " }, { name: "6. MUHAMMAD UWAIS " },
+      { name: "7. REZA EVANDRA " }, { name: "8. KHOLIDI" }, { name: "9. BAIQ RIRIN HAFIZAH" },
+      { name: "10. ARINA MUFIDATUL AINI" }, { name: "11. RADIATUL IMAM" }, { name: "12. MUH TULUS FIBRIAN" },
+      { name: "13. BAIQ NURUL AMALIA" }, { name: "14. SEPTIAN RAMADANI" }, { name: "15. NOVA OTAPIA" },
+      { name: "16. INA YULIANA" }, { name: "17. RIFKI DIKA ISLAMI" }, { name: "18. AHMAD RIZALUL RIZQI" },
+      { name: "19. RADITH SEPTIAN RIZKI RAMADHANI" }, { name: "20. AHMAD SYAPRULLOH" }, { name: "21. CANDY DEVITA AZHARI" },
+      { name: "22. LALU GEMA KHOLIQ AKBAR" }, { name: "23. BAIQ NOVALIA INDRIANI" }, { name: "24. NURUL ASANAH" },
+      { name: "25. AIZZATUL MUSTAFIDA" }, { name: "26. ARBA'IN HARIRI" }, { name: "27. ZAM ZAMI ARDI" },
+      { name: "28. KHAIRANI" }, { name: "29. AHMAD MAULANA ABDURRAHMAN" }, { name: "30. WINDI MAYZULA NURANZA" },
+      { name: "31. GINA ULAIYA" }, { name: "32. AHMAD ALPIAN ARDI" }, { name: "33. AHMAD RIZKI MAULANA" },
+      { name: "34. MUHAMMAD WAHYU PRATAMA" }, { name: "35. DENY WIRA SAPUTRA" }, { name: "36. NABIL EKA CAHYA" },
+      { name: "37. RIZKI JUNAIDI" }, { name: "38. L. AZWAR MAISAHRANU NRJ" }, { name: "39. ZAINUL NAJI" }
+    ];
+
+    let schedules = [ 
+      { id: "senin1", day: "Senin", time: "08.00–10.15", subject: "Kalkulus Dasar", lecturer: "Riana M.Sc", status: "Belum dikonfirmasi", onlineTime: "" },
+      { id: "senin2", day: "Senin", time: "13.00–14.30", subject: "Bahasa Arab", lecturer: "Amirullah S.Pd, M.Pd", status: "Belum dikonfirmasi", onlineTime: "" },
+      { id: "selasa1", day: "Selasa", time: "11.00–13.00", subject: "Dasar Pemrograman", lecturer: "Hanatul Ma'we S.kom, M.Kom", status: "Belum dikonfirmasi", onlineTime: "" },
+      { id: "rabu1", day: "Rabu", time: "11.00–12.30", subject: "KPPI", lecturer: "Dedi Sofian Mz St.M.mt", status: "Belum dikonfirmasi", onlineTime: "" },
+      { id: "rabu2", day: "Rabu", time: "13.00–14.30", subject: "Pendidikan Agama & ASWAJA", lecturer: "M. Helmi Yahya M.Ag", status: "Belum dikonfirmasi", onlineTime: "" },
+      { id: "kamis1", day: "Kamis", time: "13.00–14.30", subject: "Pendidikan Pancasila", lecturer: "Sahrul Fadli S.H, M.H", status: "Belum dikonfirmasi", onlineTime: "" },
+      { id: "jumat1", day: "Jumat", time: "08.45–10.15", subject: "Bahasa Inggris & Bahasa Indonesia", lecturer: "Fahimah Saifuddin S.Pd, M.Hum", status: "Belum dikonfirmasi", onlineTime: "" }
+    ];
+
+    let announcements = [];
+    let tasks = [];
+    let gallery = [];
+
+    const pageContent = document.getElementById("pageContent");
+    const navButtons = document.querySelectorAll(".nav-btn");
+    const adminDialog = document.getElementById("adminDialog");
+    const authDialog = document.getElementById("authDialog");
+    const taskDialog = document.getElementById("taskDialog");
+    const announcementDialog = document.getElementById("announcementDialog");
+    const galleryDialog = document.getElementById("galleryDialog");
+    const scheduleDialog = document.getElementById("scheduleDialog");
+    const adminForm = document.getElementById('adminForm');
+    const loginMessage = document.getElementById('loginMessage');
+    const adminBtn = document.getElementById('adminBtn');
+
+    let activePage = "home";
+
+    function mintaIzinNotifikasi() {
+      if ("Notification" in window && Notification.permission !== "granted") {
+        Notification.requestPermission();
+      }
+    }
+
+    function kirimNotifikasiHP(judul, pesan) {
+      if ("Notification" in window && Notification.permission === "granted") {
+        new Notification(judul, { body: pesan });
+      }
+    }
+
+    // Fungsi otomatis mendeteksi jadwal jam mengajar dosen dan mengirim notifikasi
+    function cekJadwalMengajarOtomatis() {
+      const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+      const now = new Date();
+      const hariIni = days[now.getDay()];
+      const jamSekarang = String(now.getHours()).padStart(2, '0') + "." + String(now.getMinutes()).padStart(2, '0');
+
+      schedules.forEach(item => {
+        if (item.day === hariIni) {
+          // Format waktu di jadwal contoh: "08.00–10.15" -> ambil jam mulai (08.00)
+          const jamMulai = item.time.split("–")[0].trim();
+          if (jamSekarang === jamMulai) {
+            // Cek apakah sudah pernah dinotifikasikan di sesi ini agar tidak spam
+            const notifKey = `notified_${item.id}_${now.toDateString()}`;
+            if (!localStorage.getItem(notifKey)) {
+              kirimNotifikasiHP(
+                `⏰ Waktu Mengajar: ${item.subject}`,
+                `Dosen ${item.lecturer} memiliki jadwal mengajar sekarang (${item.time}).`
+              );
+              localStorage.setItem(notifKey, "true");
+            }
+          }
+        }
+      });
+    }
+
+    async function cekResetMingguan() {
+      const now = new Date();
+      const startOfYear = new Date(now.getFullYear(), 0, 1);
+      const weekNumber = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getDay() + 1) / 7);
+      
+      const lastResetWeek = localStorage.getItem('lastResetWeek');
+      if (lastResetWeek !== String(weekNumber)) {
+        const snapshot = await db.collection("schedules").get();
+        snapshot.forEach(async (docSnap) => {
+          await db.collection("schedules").doc(docSnap.id).update({
+            status: "Belum dikonfirmasi",
+            onlineTime: ""
+          });
+        });
+        localStorage.setItem('lastResetWeek', String(weekNumber));
+      }
+    }
+
+    function convertFileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+    }
+
+    function inisialisasiFirestore() {
+      mintaIzinNotifikasi();
+      cekResetMingguan();
+
+      // Jalankan pengecekan jam mengajar setiap 60 detik (1 menit)
+      setInterval(cekJadwalMengajarOtomatis, 60000);
+
+      db.collection("schedules").onSnapshot((snapshot) => {
+        if (!snapshot.empty) {
+          let updatedSchedules = [];
+          snapshot.forEach(doc => { updatedSchedules.push({ id: doc.id, ...doc.data() }); });
+          schedules = updatedSchedules;
+        } else {
+          schedules.forEach(item => { db.collection("schedules").doc(item.id).set(item); });
+        }
+        updateCounts();
+        if (activePage === "schedule" || activePage === "lecturers") openPage(activePage);
+      });
+
+      db.collection("tasks").onSnapshot((snapshot) => {
+        tasks = [];
+        const sekarang = new Date().getTime();
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const waktuBuat = data.createdAt ? data.createdAt.toMillis() : sekarang;
+          const batasJam = parseInt(data.expiryHours || 24);
+          const batasMilis = batasJam * 60 * 60 * 1000;
+
+          if (sekarang - waktuBuat < batasMilis) {
+            tasks.push({ id: doc.id, ...data });
+          } else {
+            db.collection("tasks").doc(doc.id).delete();
+          }
+        });
+        if (activePage === "tasks") showTasks();
+      });
+
+      db.collection("announcements").onSnapshot((snapshot) => {
+        announcements = [];
+        const sekarang = new Date().getTime();
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const waktuBuat = data.createdAt ? data.createdAt.toMillis() : sekarang;
+          const batasJam = parseInt(data.expiryHours || 24);
+          const batasMilis = batasJam * 60 * 60 * 1000;
+
+          if (sekarang - waktuBuat < batasMilis) {
+            announcements.push({ id: doc.id, ...data });
+          } else {
+            db.collection("announcements").doc(doc.id).delete();
+          }
+        });
+        updateCounts();
+        if (activePage === "announcements" || activePage === "home") openPage(activePage);
+      });
+
+      db.collection("gallery").onSnapshot((snapshot) => {
+        gallery = [];
+        snapshot.forEach(doc => { gallery.push({ id: doc.id, ...doc.data() }); });
+        if (activePage === "gallery") showGallery();
+      });
+    }
+
+    if (adminForm) {
+      adminForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const uInput = document.getElementById('adminUsername').value.trim();
+        const pInput = document.getElementById('adminPassword').value.trim();
+
+        if (uInput === "Adminmaster" && pInput === "_4dm1nmaster") {
+          setLoginSession("admin_master", "Admin Master");
+          return;
+        }
+
+        try {
+          const userDoc = await db.collection("users").doc(uInput).get();
+          if (userDoc.exists) {
+            const uData = userDoc.data();
+            if (uData.password === pInput && uData.status === "approved") {
+              setLoginSession(uData.role.toLowerCase(), uData.namaAsli);
+              return;
+            } else if (uData.status === "pending") {
+              loginMessage.innerText = "Akun Anda belum disetujui oleh Admin Master.";
+              loginMessage.style.color = "orange";
+              return;
+            }
+          }
+          loginMessage.innerText = "Username atau password salah!";
+          loginMessage.style.color = "red";
+        } catch(err) {
+          loginMessage.innerText = "Error Login: " + err.message;
+        }
+      });
+    }
+
+    function setLoginSession(role, name) {
+      localStorage.setItem('userRole', role);
+      localStorage.setItem('userName', name);
+      alert(`Login Berhasil sebagai ${name}!`);
+      adminDialog.close();
+      adminForm.reset();
+      terapkanHakAkses();
+    }
+
+    function logout() {
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('userName');
+      alert('Anda telah keluar (Logout).');
+      terapkanHakAkses();
+    }
+
+    function terapkanHakAkses() {
+      const currentRole = localStorage.getItem('userRole') || 'klien';
+      const userName = localStorage.getItem('userName') || '';
+
+      if (currentRole === 'admin_master') {
+        adminBtn.innerText = `👑 Admin Master [Logout]`;
+        adminBtn.className = "admin-btn master-admin-badge";
+        adminBtn.onclick = logout;
+      } else if (currentRole === 'admin' || currentRole === 'dosen') {
+        adminBtn.innerText = `Mode: ${userName} [Logout]`;
+        adminBtn.className = "admin-btn";
+        adminBtn.onclick = logout;
+      } else {
+        adminBtn.innerText = "Login Admin / Dosen";
+        adminBtn.className = "admin-btn";
+        adminBtn.onclick = () => {
+          if(loginMessage) loginMessage.textContent = "";
+          adminDialog.showModal();
+        };
+      }
+
+      const masterOnlyEls = document.querySelectorAll('.admin-master-only');
+      masterOnlyEls.forEach(el => {
+        el.style.display = (currentRole === 'admin_master') ? 'inline-block' : 'none';
+      });
+
+      if (pages[activePage]) pages[activePage]();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      terapkanHakAkses();
+      inisialisasiFirestore();
+    });
+
+    function updateCounts() {
+      document.getElementById("studentCount").textContent = students.length;
+      document.getElementById("scheduleCount").textContent = schedules.length;
+      document.getElementById("announcementCount").textContent = announcements.length;
+    }
+
+    function showHome() {
+      const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+      const todayname = days[new Date().getDay()];
+      const todayschedule = schedules.filter(item => item.day === todayname);
+
+      const schedulehtml = todayschedule.length > 0
+        ? todayschedule.map(item => `
+            <p><strong>${item.subject}</strong></p>
+            <p class="muted">${item.time} · Dosen: ${item.lecturer} · <span class="tag">${item.status}</span> ${item.onlineTime ? `<br>🌐 <strong>Kuliah Online:</strong> ${item.onlineTime}` : ''}</p>
+          `).join("")
+        : `<p>Tidak ada jadwal untuk hari ini (${todayname}).</p>`;
+
+      const latestAnn = announcements[announcements.length - 1] || { title: "Belum ada pengumuman", body: "-" };
+
+      pageContent.innerHTML = `
+        <div class="card">
+          <h3>Pengumuman Terbaru</h3>
+          <p><strong>${latestAnn.title}</strong></p>
+          <p class="muted">${latestAnn.body}</p>
+        </div>
+        <div class="card">
+          <h3>Jadwal Kuliah Hari Ini (${todayname})</h3>
+          ${schedulehtml}
+        </div>
+      `;
+    }
+
+    function showStudents() {
+      pageContent.innerHTML = `
+        <div class="card">
+          <h3>👥 Data Mahasiswa Angkatan 2026</h3>
+          ${students.map(student => `
+            <p class="student-name">${student.name}</p>
+            <hr>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function showSchedule() {
+      const currentRole = localStorage.getItem('userRole') || 'klien';
+      const canEdit = (currentRole === 'admin_master');
+
+      pageContent.innerHTML = `
+        <div class="card">
+          <h3>📚 Jadwal Kuliah Lengkap</h3>
+          ${schedules.map(item => `
+            <div style="margin-bottom: 12px;">
+              <p><strong>${item.day} · ${item.subject}</strong></p>
+              <p class="muted">${item.time} | Dosen: ${item.lecturer}</p>
+              <span class="tag">${item.status}</span>
+              ${item.onlineTime ? `<br><small style="color:var(--blue);">🌐 Kuliah Online: ${item.onlineTime}</small>` : ''}
+              ${canEdit ? `<button class="primary-btn edit-sch-btn" data-id="${item.id}" style="font-size:11px; padding:5px 10px; margin-left:10px;">Edit Jadwal</button>` : ''}
+            </div>
+            <hr>
+          `).join("")}
+        </div>
+      `;
+
+      if (canEdit) {
+        document.querySelectorAll(".edit-sch-btn").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            const id = e.target.dataset.id;
+            const targetSch = schedules.find(s => s.id === id);
+            if (targetSch) {
+              document.getElementById("schId").value = targetSch.id;
+              document.getElementById("schDay").value = targetSch.day;
+              document.getElementById("schSubject").value = targetSch.subject;
+              document.getElementById("schTime").value = targetSch.time;
+              document.getElementById("schLecturer").value = targetSch.lecturer;
+              scheduleDialog.showModal();
+            }
+          });
+        });
+      }
+    }
+
+    function showLecturers() {
+      const currentRole = localStorage.getItem('userRole') || 'klien';
+      const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+      const todayname = days[new Date().getDay()];
+      const todaySchedules = schedules.filter(item => item.day === todayname);
+
+      if (currentRole === 'klien') {
+        pageContent.innerHTML = `
+          <div class="card">
+            <h3>🔒 Akses Terbatas</h3>
+            <p>Menu perubahan Status Kehadiran Dosen hanya dapat dibuka oleh <strong>Admin Master</strong> atau <strong>Dosen</strong>.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const lecturersHTML = todaySchedules.length > 0
+        ? todaySchedules.map((item) => `
+            <div style="margin-bottom: 18px;" class="lecturer-row" data-id="${item.id}">
+              <h3>${item.subject}</h3>
+              <p>Dosen: ${item.lecturer}</p>
+              <label>Status Kehadiran:</label>
+              <select class="status-select" data-id="${item.id}" style="padding:8px; width:100%; border-radius:8px; border:1px solid #ccd7e5; background:white;">
+                <option value="Belum dikonfirmasi" ${item.status === "Belum dikonfirmasi" ? "selected" : ""}>Belum dikonfirmasi</option>
+                <option value="Hadir" ${item.status === "Hadir" ? "selected" : ""}>Hadir</option>
+                <option value="Terlambat" ${item.status === "Terlambat" ? "selected" : ""}>Terlambat</option>
+                <option value="Tidak Masuk" ${item.status === "Tidak Masuk" ? "selected" : ""}>Tidak Masuk</option>
+                <option value="Kuliah Online" ${item.status === "Kuliah Online" ? "selected" : ""}>Kuliah Online</option>
+              </select>
+
+              <div class="online-time-container" style="margin-top: 10px; display: ${item.status === "Kuliah Online" ? "block" : "none"};">
+                <label>Pilih Waktu / Jam Kuliah Online:</label>
+                <input type="text" class="online-time-input" data-id="${item.id}" value="${item.onlineTime || ''}" placeholder="Contoh: Pukul 13.00 WITA via Zoom">
+              </div>
+            </div>
+            <hr>
+          `).join("")
+        : `<p class="muted">Tidak ada jadwal kuliah untuk hari ini (${todayname}).</p>`;
+
+      pageContent.innerHTML = `
+        <div class="card">
+          <h3>Informasi & Presensi Dosen Hari Ini (${todayname})</h3>
+          ${lecturersHTML}
+        </div>
+      `;
+
+      // DIPERBAIKI: Mengirim notifikasi untuk SEMUA status pilihan (Hadir, Terlambat, Tidak Masuk, Kuliah Online, dll)
+      document.querySelectorAll(".status-select").forEach(sel => {
+        sel.addEventListener("change", async (e) => {
+          const id = e.target.dataset.id;
+          const val = e.target.value;
+          const container = e.target.parentElement.querySelector(".online-time-container");
+
+          if (val === "Kuliah Online") {
+            container.style.display = "block";
+          } else {
+            container.style.display = "none";
+            await db.collection("schedules").doc(id).update({ status: val, onlineTime: "" });
+            
+            // Kirim notifikasi push ke perangkat saat status selain online dipilih
+            const targetSch = schedules.find(s => s.id === id);
+            const matkul = targetSch ? targetSch.subject : "Mata Kuliah";
+            kirimNotifikasiHP("Status Kehadiran Dosen Diperbarui", `${matkul}: Status diubah menjadi "${val}"`);
+            alert(`Status berhasil diperbarui menjadi "${val}" dan notifikasi dikirim!`);
+          }
+        });
+      });
+
+      document.querySelectorAll(".online-time-input").forEach(inp => {
+        inp.addEventListener("change", async (e) => {
+          const id = e.target.dataset.id;
+          const onlineVal = e.target.value;
+          await db.collection("schedules").doc(id).update({ status: "Kuliah Online", onlineTime: onlineVal });
+          kirimNotifikasiHP("Jadwal Kuliah Online Baru", `Kuliah online dijadwalkan: ${onlineVal}`);
+          alert("Waktu kuliah online berhasil disimpan dan notifikasi dikirim!");
+        });
+      });
+    }
+
+    function showTasks() {
+      const currentRole = localStorage.getItem('userRole') || 'klien';
+      const canAddTask = (currentRole === 'admin_master' || currentRole === 'dosen' || currentRole === 'admin');
+      const canDelete = (currentRole === 'admin_master' || currentRole === 'dosen');
+
+      pageContent.innerHTML = `
+        <div class="card">
+          <h3>📝 Informasi Tugas Kelas</h3>
+          ${canAddTask ? `<button class="primary-btn" id="openTaskBtn" style="margin-bottom:15px;">+ Tambah Tugas Baru</button>` : ''}
+          ${tasks.length > 0 ? tasks.map(t => `
+            <div style="margin-bottom: 15px;" id="task-${t.id}">
+              <h4 style="margin-bottom:4px; color:var(--navy);">${t.subject}</h4>
+              <p style="margin-bottom:4px;">${t.desc}</p>
+              ${t.imgUrl ? `<img src="${t.imgUrl}" alt="Soal Tugas" class="task-img">` : ''}
+              <p class="muted" style="font-size:11px; margin-top:5px;">Diunggah oleh: ${t.author || 'Admin'} | Hilang otomatis dalam ${t.expiryHours == 24 ? '24 Jam' : t.expiryHours == 168 ? '7 Hari' : '14 Hari'}</p>
+              ${canDelete ? `<button class="primary-btn delete-task-btn" data-id="${t.id}" style="background:#dc3545; color:white; font-size:11px; padding:5px 10px; margin-top:5px;">Hapus Tugas</button>` : ''}
+            </div>
+            <hr>
+          `).join("") : `<p class="muted">Belum ada tugas yang diberikan.</p>`}
+        </div>
+      `;
+
+      const openTaskBtn = document.getElementById("openTaskBtn");
+      if (openTaskBtn) {
+        openTaskBtn.addEventListener("click", () => taskDialog.showModal());
+      }
+
+      document.querySelectorAll(".delete-task-btn").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+          if (confirm("Yakin ingin menghapus tugas ini?")) {
+            const id = e.target.dataset.id;
+            await db.collection("tasks").doc(id).delete();
+            alert("Tugas berhasil dihapus.");
+          }
+        });
+      });
+    }
+
+    function showAnnouncements() {
+      const currentRole = localStorage.getItem('userRole') || 'klien';
+      const canAddAnn = (currentRole === 'admin_master');
+
+      pageContent.innerHTML = `
+        <div class="card">
+          <h3>📢 Pengumuman & Informasi Kelas</h3>
+          ${canAddAnn ? `<button class="primary-btn" id="openAnnBtn" style="margin-bottom:15px;">+ Tambah Pengumuman</button>` : ''}
+          ${announcements.slice().reverse().map(item => `
+            <article style="margin-bottom: 15px;">
+              <h4 style="color:var(--navy); margin-bottom:4px;">${item.title}</h4>
+              <p>${item.body}</p>
+              <p class="muted" style="font-size:11px;">${item.date || 'Baru saja'} | Hilang otomatis dalam ${item.expiryHours == 24 ? '24 Jam' : item.expiryHours == 168 ? '7 Hari' : '14 Hari'}</p>
+              ${canAddAnn ? `<button class="primary-btn delete-ann-btn" data-id="${item.id}" style="background:#dc3545; color:white; font-size:11px; padding:5px 10px; margin-top:5px;">Hapus Pengumuman</button>` : ''}
+            </article>
+            <hr>
+          `).join("")}
+        </div>
+      `;
+
+      const openAnnBtn = document.getElementById("openAnnBtn");
+      if (openAnnBtn) {
+        openAnnBtn.addEventListener("click", () => announcementDialog.showModal());
+      }
+
+      document.querySelectorAll(".delete-ann-btn").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+          if (confirm("Yakin ingin menghapus pengumuman ini?")) {
+            const id = e.target.dataset.id;
+            await db.collection("announcements").doc(id).delete();
+            alert("Pengumuman berhasil dihapus.");
+          }
+        });
+      });
+    }
+
+    function showGallery() {
+      const currentRole = localStorage.getItem('userRole') || 'klien';
+      const canUpload = (currentRole === 'admin_master');
+
+      pageContent.innerHTML = `
+        <div class="card">
+          <h3>📸 Galeri Foto Kegiatan Kelas</h3>
+          ${canUpload ? `<button class="primary-btn" id="openGalleryBtn" style="margin-bottom:15px;">+ Unggah Foto Baru</button>` : ''}
+          ${gallery.length > 0 ? `
+            <div class="gallery-grid">
+              ${gallery.map(g => `
+                <div class="gallery-item">
+                  <img src="${g.imgUrl}" alt="Foto Galeri" class="gallery-img">
+                  <p style="font-size:13px; margin-top:8px; font-weight:bold;">${g.caption}</p>
+                </div>
+              `).join("")}
+            </div>
+          ` : `<p class="empty">Belum ada foto di galeri kelas.</p>`}
+        </div>
+      `;
+
+      const openGalleryBtn = document.getElementById("openGalleryBtn");
+      if (openGalleryBtn) {
+        openGalleryBtn.addEventListener("click", () => galleryDialog.showModal());
+      }
+    }
+
+    function showApprovals() {
+      db.collection("pending_users").get().then((snapshot) => {
+        let pendingList = [];
+        snapshot.forEach(doc => pendingList.push({ id: doc.id, ...doc.data() }));
+
+        pageContent.innerHTML = `
+          <div class="card">
+            <h3>🛡️ Daftar Permintaan Akun Baru</h3>
+            ${pendingList.length > 0 ? pendingList.map(u => `
+              <div style="background:#f8f9fa; padding:12px; border-radius:8px; margin-bottom:10px; border:1px solid #ddd;">
+                <p><strong>Nama:</strong> ${u.namaAsli} (${u.role})</p>
+                <p><strong>Username:</strong> ${u.username}</p>
+                <p><strong>Status:</strong> <span class="tag" style="background:#fff3cd; color:#856404;">Pending</span></p>
+                <div style="margin-top:10px; display:flex; gap:8px;">
+                  <button class="primary-btn approve-btn" data-username="${u.username}" style="background:#28a745; padding:6px 12px; font-size:12px;">Setujui</button>
+                  <button class="primary-btn reject-btn" data-username="${u.username}" style="background:#dc3545; padding:6px 12px; font-size:12px;">Tolak</button>
+                </div>
+              </div>
+            `).join("") : `<p class="muted">Tidak ada permintaan akun baru yang menunggu persetujuan.</p>`}
+          </div>
+        `;
+
+        document.querySelectorAll(".approve-btn").forEach(btn => {
+          btn.addEventListener("click", async (e) => {
+            const username = e.target.dataset.username;
+            const docRef = db.collection("pending_users").doc(username);
+            const docSnap = await docRef.get();
+            if(docSnap.exists) {
+              const data = docSnap.data();
+              await db.collection("users").doc(username).set({
+                namaAsli: data.namaAsli,
+                username: data.username,
+                password: data.password,
+                role: data.role,
+                status: "approved",
+                createdAt: new Date()
+              });
+              await docRef.delete();
+              alert("Akun berhasil disetujui!");
+              showApprovals();
+            }
+          });
+        });
+
+        document.querySelectorAll(".reject-btn").forEach(btn => {
+          btn.addEventListener("click", async (e) => {
+            const username = e.target.dataset.username;
+            await db.collection("pending_users").doc(username).delete();
+            alert("Permintaan akun ditolak.");
+            showApprovals();
+          });
+        });
+      });
+    }
+
+    const pages = {
+      home: showHome,
+      students: showStudents,
+      schedule: showSchedule,
+      lecturers: showLecturers,
+      tasks: showTasks,
+      announcements: showAnnouncements,
+      gallery: showGallery,
+      approvals: showApprovals
+    };
+
+    function openPage(page) {
+      activePage = page;
+      navButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.page === page);
+      });
+      if (pages[page]) pages[page]();
+    }
+
+    navButtons.forEach(button => {
+      button.addEventListener("click", () => openPage(button.dataset.page));
+    });
+
+    document.getElementById("closeDialog").addEventListener("click", () => adminDialog.close());
+    document.getElementById("closeAuthDialog").addEventListener("click", () => authDialog.close());
+    document.getElementById("closeTaskDialog").addEventListener("click", () => taskDialog.close());
+    document.getElementById("closeAnnDialog").addEventListener("click", () => announcementDialog.close());
+    document.getElementById("closeGalleryDialog").addEventListener("click", () => galleryDialog.close());
+    document.getElementById("closeScheduleDialog").addEventListener("click", () => scheduleDialog.close());
+
+    document.getElementById("openRegisterModal").addEventListener("click", (e) => {
+      e.preventDefault();
+      adminDialog.close();
+      authDialog.showModal();
+    });
+
+    document.getElementById("formRegistrasi").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const namaAsli = document.getElementById("namaAsli").value;
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const role = document.getElementById("role").value;
+      const pesanStatus = document.getElementById("pesanStatus");
+
+      pesanStatus.style.display = "block";
+      pesanStatus.style.backgroundColor = "#fff3cd";
+      pesanStatus.style.color = "#856404";
+      pesanStatus.innerText = "Mengirim permintaan registrasi...";
+
+      try {
+        await db.collection("pending_users").doc(username).set({
+          namaAsli, username, password, role, status: "pending", createdAt: new Date()
+        });
+        pesanStatus.style.backgroundColor = "#d4edda";
+        pesanStatus.style.color = "#155724";
+        pesanStatus.innerText = "Permintaan berhasil dikirim! Menunggu persetujuan Admin Master.";
+        setTimeout(() => {
+          authDialog.close();
+          document.getElementById("formRegistrasi").reset();
+          pesanStatus.style.display = "none";
+        }, 2500);
+      } catch (err) {
+        pesanStatus.style.backgroundColor = "#f8d7da";
+        pesanStatus.style.color = "#721c24";
+        pesanStatus.innerText = "Gagal: " + err.message;
+      }
+    });
+
+    document.getElementById("taskForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const subject = document.getElementById("taskSubject").value;
+      const desc = document.getElementById("taskDesc").value;
+      const expiryHours = document.getElementById("taskExpiry").value;
+      const fileInput = document.getElementById("taskImgFile");
+
+      let imgUrl = "";
+      if (fileInput.files && fileInput.files[0]) {
+        imgUrl = await convertFileToBase64(fileInput.files[0]);
+      }
+
+      db.collection("tasks").add({
+        subject,
+        desc,
+        imgUrl,
+        expiryHours,
+        author: localStorage.getItem('userName') || 'Admin',
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => {
+        kirimNotifikasiHP("Tugas Baru Ditambahkan", `Mata Kuliah: ${subject}`);
+        alert("Tugas berhasil ditambahkan!");
+        taskDialog.close();
+        document.getElementById("taskForm").reset();
+      });
+    });
+
+    document.getElementById("announcementForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("annTitle").value;
+      const body = document.getElementById("annBody").value;
+      const expiryHours = document.getElementById("annExpiry").value;
+
+      db.collection("announcements").add({
+        title,
+        body,
+        expiryHours,
+        date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => {
+        kirimNotifikasiHP("Info Kelas Baru", title);
+        alert("Pengumuman berhasil dipublikasikan!");
+        announcementDialog.close();
+        document.getElementById("announcementForm").reset();
+      });
+    });
+
+    document.getElementById("galleryForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const caption = document.getElementById("galleryCaption").value;
+      const fileInput = document.getElementById("galleryImgFile");
+
+      if (fileInput.files && fileInput.files[0]) {
+        try {
+          const base64Img = await convertFileToBase64(fileInput.files[0]);
+          await db.collection("gallery").add({
+            caption,
+            imgUrl: base64Img,
+            createdAt: new Date()
+          });
+          alert("Foto berhasil diunggah ke galeri!");
+          galleryDialog.close();
+          document.getElementById("galleryForm").reset();
+        } catch (err) {
+          alert("Gagal mengunggah foto: " + err.message);
+        }
+      }
+    });
+
+    document.getElementById("scheduleForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = document.getElementById("schId").value;
+      db.collection("schedules").doc(id).update({
+        subject: document.getElementById("schSubject").value,
+        time: document.getElementById("schTime").value,
+        lecturer: document.getElementById("schLecturer").value
+      }).then(() => {
+        alert("Jadwal berhasil diperbarui!");
+        scheduleDialog.close();
+      });
+    });
+
+    updateCounts();
+    openPage("home");
+  </script>
+</body>
+</html>
