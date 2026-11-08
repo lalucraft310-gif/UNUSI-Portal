@@ -604,10 +604,8 @@
 
       schedules.forEach(item => {
         if (item.day === hariIni) {
-          // Format waktu di jadwal contoh: "08.00–10.15" -> ambil jam mulai (08.00)
           const jamMulai = item.time.split("–")[0].trim();
           if (jamSekarang === jamMulai) {
-            // Cek apakah sudah pernah dinotifikasikan di sesi ini agar tidak spam
             const notifKey = `notified_${item.id}_${now.toDateString()}`;
             if (!localStorage.getItem(notifKey)) {
               kirimNotifikasiHP(
@@ -652,7 +650,6 @@
       mintaIzinNotifikasi();
       cekResetMingguan();
 
-      // Jalankan pengecekan jam mengajar setiap 60 detik (1 menit)
       setInterval(cekJadwalMengajarOtomatis, 60000);
 
       db.collection("schedules").onSnapshot((snapshot) => {
@@ -922,7 +919,6 @@
         </div>
       `;
 
-      // DIPERBAIKI: Mengirim notifikasi untuk SEMUA status pilihan (Hadir, Terlambat, Tidak Masuk, Kuliah Online, dll)
       document.querySelectorAll(".status-select").forEach(sel => {
         sel.addEventListener("change", async (e) => {
           const id = e.target.dataset.id;
@@ -935,7 +931,6 @@
             container.style.display = "none";
             await db.collection("schedules").doc(id).update({ status: val, onlineTime: "" });
             
-            // Kirim notifikasi push ke perangkat saat status selain online dipilih
             const targetSch = schedules.find(s => s.id === id);
             const matkul = targetSch ? targetSch.subject : "Mata Kuliah";
             kirimNotifikasiHP("Status Kehadiran Dosen Diperbarui", `${matkul}: Status diubah menjadi "${val}"`);
@@ -1179,6 +1174,7 @@
       }
     });
 
+    // EVENT SUBMIT TUGAS BARU (TERINTEGRASI NOTIFIKASI)
     document.getElementById("taskForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const subject = document.getElementById("taskSubject").value;
@@ -1199,13 +1195,16 @@
         author: localStorage.getItem('userName') || 'Admin',
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       }).then(() => {
-        kirimNotifikasiHP("Tugas Baru Ditambahkan", `Mata Kuliah: ${subject}`);
-        alert("Tugas berhasil ditambahkan!");
+        // Memicu notifikasi perangkat saat tugas baru ditambahkan
+        kirimNotifikasiHP("📝 Tugas Baru Ditambahkan", `Mata Kuliah: ${subject} - Cek portal sekarang!`);
+        
+        alert("Tugas berhasil ditambahkan dan notifikasi terkirim!");
         taskDialog.close();
         document.getElementById("taskForm").reset();
       });
     });
 
+    // EVENT SUBMIT PENGUMUMAN / INFO KELAS BARU (TERINTEGRASI NOTIFIKASI)
     document.getElementById("announcementForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("annTitle").value;
@@ -1219,8 +1218,10 @@
         date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       }).then(() => {
-        kirimNotifikasiHP("Info Kelas Baru", title);
-        alert("Pengumuman berhasil dipublikasikan!");
+        // Memicu notifikasi perangkat saat info kelas/pengumuman baru dibuat
+        kirimNotifikasiHP("📢 Info Kelas Baru", title);
+
+        alert("Pengumuman berhasil dipublikasikan dan notifikasi terkirim!");
         announcementDialog.close();
         document.getElementById("announcementForm").reset();
       });
